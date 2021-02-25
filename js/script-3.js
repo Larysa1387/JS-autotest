@@ -243,17 +243,113 @@
 // .............................................................................
 // Module 3 Test 10
 // .............................................................................
-const apartment = {
-  descr: 'Просторная квартира в центре',
-  rating: 4,
-  price: 2153,
-};
-const keys = [];
-const values = [];
-// Пиши код ниже этой строки
-for (const key in apartment) {
-  keys.push(key);
-  values.push(apartment[key]);
-}
-console.log(keys);
-console.log(values);
+// const apartment = {
+//   descr: 'Просторная квартира в центре',
+//   rating: 4,
+//   price: 2153,
+// };
+// const keys = [];
+// const values = [];
+// // Пиши код ниже этой строки
+// for (const key in apartment) {
+//   keys.push(key);
+//   values.push(apartment[key]);
+// }
+// console.log(keys);
+// console.log(values);
+
+// .............................................................................
+// Module 3 Test 11
+// .............................................................................
+// const keys = [];
+// const values = [];
+// const advert = {
+//   service: 'apt',
+// };
+// const apartment = Object.create(advert);
+// apartment.descr = 'Просторная квартира в центре';
+// apartment.rating = 4;
+// apartment.price = 2153;
+
+// for (const key in apartment) {
+//   // Пиши код ниже этой строки
+// if(apartment.hasOwnProperty(key)) {
+//   keys.push(key);
+//   values.push(apartment[key]);
+// }
+// // Пиши код выше этой строки
+// }
+// console.log(keys);
+// console.log(values);
+// console.log(apartment);
+
+
+// .............................................................................
+// Module 3 Test 12
+// .............................................................................
+// function countProps(object) {
+//   let propCount = 0;
+//   // Пиши код ниже этой строки
+
+// .........запасной вариант....... propCount = Object.keys(object).length;
+
+// for (const key in object) {
+//   if (object.hasOwnProperty(key)) {
+//     propCount += 1;
+//   }
+// }
+
+//   // Пиши код выше этой строки
+//   return propCount;
+// }
+
+// console.log(countProps({})); // 0
+// console.log(countProps({ name: 'Mango', age: 2 })); // 2
+// console.log(countProps({ mail: 'poly@mail.com', isOnline: true, score: 500 })); // 3
+
+// .............................................................................
+// Module 3 Test 13
+// .............................................................................
+// const apartment = {
+//   descr: 'Просторная квартира в центре',
+//   rating: 4,
+//   price: 2153,
+// };
+// const values = [];
+// // Пиши код ниже этой строки
+// const keys = Object.keys(apartment);
+
+// for (const key of keys) {
+// values.push(apartment[key]);
+// }
+// console.log(values);
+
+// .............................................................................
+// Module 3 Test 14
+// .............................................................................
+// const apartment = {
+//   descr: 'Просторная квартира в центре',
+//   rating: 4,
+//   price: 2153,
+// };
+// // Пиши код ниже этой строки
+// const keys = Object.keys(apartment);
+// const values = Object.values(apartment);
+
+
+// .............................................................................
+// Module 3 Test 15
+// .............................................................................
+// const apartment = {
+//   descr: 'Просторная квартира в центре',
+//   rating: 4,
+//   price: 2153,
+// };
+// // Пиши код ниже этой строки
+// const keys = Object.keys(apartment);
+// const values = Object.values(apartment);
+
+
+// .............................................................................
+// Module 3 Test 16
+// .............................................................................
