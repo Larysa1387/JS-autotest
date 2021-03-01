@@ -770,38 +770,150 @@
 // .............................................................................
 // Module 3 Test 35
 // .............example................................................................
-const bookShelf = {
-  books: ['Последнее королевство'],
-  getBooks() {
-    return this.books;
-  },
-  addBook(bookName) {
-    this.books.push(bookName);
-  },
-  removeBook(bookName) {
-    const bookIndex = this.books.indexOf(bookName);
-    this.books.splice(bookIndex, 1);
-  },
-};
+// const bookShelf = {
+//   books: ['Последнее королевство'],
+//   getBooks() {
+//     return this.books;
+//   },
+//   addBook(bookName) {
+//     this.books.push(bookName);
+//   },
+//   removeBook(bookName) {
+//     const bookIndex = this.books.indexOf(bookName);
+//     this.books.splice(bookIndex, 1);
+//   },
+// };
 // ....................test 35.............................................................
-const bookShelf = {
-  books: ['Последнее королевство', 'Мгла', 'Страж снов'],
-  updateBook(oldName, newName) {
-    // Пиши код ниже этой строки
-const bookIndex = this.books.indexOf(oldName);
-this.books.splice(bookIndex, 1, newName);
+// const bookShelf = {
+//   books: ['Последнее королевство', 'Мгла', 'Страж снов'],
+//   updateBook(oldName, newName) {
+//     // Пиши код ниже этой строки
+// const bookIndex = this.books.indexOf(oldName);
+// this.books.splice(bookIndex, 1, newName);
 
-    // Пиши код выше этой строки
-  },
-};
+//     // Пиши код выше этой строки
+//   },
+// };
 
 
 // .............................................................................
 // Module 3 Test 36
 // .............................................................................
+// const atTheOldToad = {
+//   // Пиши код ниже этой строки
+//   potions: [],  // - свойство для объекта
+//   // Пиши код выше этой строки
+// };
 
 
 
 // .............................................................................
 // Module 3 Test 37
 // .............................................................................
+// const atTheOldToad = {
+//   // Пиши код ниже этой строки
+//   potions: ['Зелье скорости', 'Дыхание дракона', 'Каменная кожа'],
+//   getPotions(){
+//   return this.potions;  //  возвращает значения массива
+//   },
+//   // Пиши код выше этой строки
+// };
+
+// .............................................................................
+// Module 3 Test 38
+// .............................................................................
+// const atTheOldToad = {
+//   potions: ['Зелье скорости', 'Дыхание дракона', 'Каменная кожа'],
+//   addPotion(potionName) {
+//     // Пиши код ниже этой строки
+//     this.potions.push(potionName);
+//     // Пиши код выше этой строки
+//   },
+// };
+
+
+// .............................................................................
+// Module 3 Test 39
+// .............................................................................
+// const atTheOldToad = {
+//   potions: ["Зелье скорости", "Дыхание дракона", "Каменная кожа"],
+//   removePotion(potionName) {
+//     // Пиши код ниже этой строки
+//     const potionIndex = this.potions.indexOf(potionName);
+//     this.potions.splice(potionIndex, 1);
+//     // Пиши код выше этой строки
+//   },
+// };
+
+// console.log(atTheOldToad.removePotion('Дыхание дракона'));
+// console.log(atTheOldToad.potions);
+
+// .............................................................................
+// Module 3 Test 40
+// .............................................................................
+// const atTheOldToad = {
+//   potions: ['Зелье скорости', 'Дыхание дракона', 'Каменная кожа'],
+//   updatePotionName(oldName, newName) {
+//     // Пиши код ниже этой строки
+//   const potionIndex = this.potions.indexOf(oldName);
+//   this.potions.splice(potionIndex, 1, newName);
+//     // Пиши код выше этой строки
+//   },
+// };
+
+// console.log(atTheOldToad.updatePotionName('Дыхание дракона', 'Полиморф'));
+// console.log(atTheOldToad.potions);
+
+// .............................................................................
+// Module 3 Test 41
+// .............................................................................
+const atTheOldToad = {
+  potions: [
+    { name: 'Зелье скорости', price: 460 },
+    { name: 'Дыхание дракона', price: 780 },
+    { name: 'Каменная кожа', price: 520 },
+  ],
+  // Пиши код ниже этой строки
+  getPotions() {
+
+    return this.potions;
+  },
+  addPotion(potionName) {
+    if (this.potions.includes(potionName)) {
+      return `Зелье ${potionName} уже есть в инвентаре!`;
+    }
+
+    this.potions.push(potionName);
+  },
+  removePotion(potionName) {
+    // const potionIndex = this.potions.indexOf(potionName);
+    const { potions } = this;
+    for (let i = 0; i < potions.length; i += 1) {
+      const { name } = potions[i];
+        if (name === -1) {
+          return `Зелья ${potionName} нет в инвентаре!`;
+        };
+        if (potionName === name) {
+        return potions.splice(i, 1);
+      }
+    }
+  },
+  updatePotionName(oldName, newName) {
+    const { potions } = this;
+    for (let i = 0; i < potions.length; i += 1) {
+        const { name } = potions[i];
+      if (name === -1) {
+        return `Зелья ${potionName} нет в инвентаре!`;
+      };
+      if (oldName === name) {
+          potions[i].name = newName;
+        return name;
+      }
+    }
+  },
+  // Пиши код выше этой строки
+};
+// console.log(atTheOldToad.getPotions());
+// console.log(atTheOldToad.removePotion('Дыхание дракона'));  //, в свойстве potions будет массив [ { name: 'Зелье скорости', price: 460 }, { name: 'Каменная кожа', price: 520 } ].
+console.log(atTheOldToad.updatePotionName('Дыхание дракона', 'Полиморф'),);  // [ { name: 'Зелье скорости', price: 460 }, { name: 'Полиморф', price: 780 }, { name: 'Каменная кожа', price: 520 } ].
+console.log(atTheOldToad.potions);
