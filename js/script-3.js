@@ -525,21 +525,21 @@
 // .............................................................................
 // Module 3 Test 23
 // .............................................................................
-const highTemperatures = {
-  yesterday: 28,
-  today: 26,
-  tomorrow: 33,
-};
-// Пиши код ниже этой строки
-const {
-  yesterday: highYesterday,
-  today: highToday,
-  tomorrow: highTomorrow,
-  icon: highIcon = 'https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg',
-} = highTemperatures;
-// Пиши код выше этой строки
-const meanTemperature = (highYesterday + highToday + highTomorrow) / 3;
-console.log(meanTemperature);
+// const highTemperatures = {
+//   yesterday: 28,
+//   today: 26,
+//   tomorrow: 33,
+// };
+// // Пиши код ниже этой строки
+// const {
+//   yesterday: highYesterday,
+//   today: highToday,
+//   tomorrow: highTomorrow,
+//   icon: highIcon = 'https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg',
+// } = highTemperatures;
+// // Пиши код выше этой строки
+// const meanTemperature = (highYesterday + highToday + highTomorrow) / 3;
+// console.log(meanTemperature);
 
 // .............................................................................
 // Module 3 Test 24
@@ -566,38 +566,242 @@ console.log(meanTemperature);
 //   console.log(rating);
 // }
 // .................................................................................
-const colors = [
-  { hex: '#f44336', rgb: '244,67,54' },
-  { hex: '#2196f3', rgb: '33,150,243' },
-  { hex: '#4caf50', rgb: '76,175,80' },
-  { hex: '#ffeb3b', rgb: '255,235,59' },
-];
+// const colors = [
+//   { hex: '#f44336', rgb: '244,67,54' },
+//   { hex: '#2196f3', rgb: '33,150,243' },
+//   { hex: '#4caf50', rgb: '76,175,80' },
+//   { hex: '#ffeb3b', rgb: '255,235,59' },
+// ];
 
-const hexColors = [];
-const rgbColors = [];
-// Пиши код ниже этой строки
+// const hexColors = [];
+// const rgbColors = [];
+// // Пиши код ниже этой строки
 
-for (const {hex, rgb} of colors) {
-  hexColors.push(hex);
-  rgbColors.push(rgb);
-}
+// for (const {hex, rgb} of colors) {
+//   hexColors.push(hex);
+//   rgbColors.push(rgb);
+// }
 
 
 // .............................................................................
 // Module 3 Test 25
 // .............................................................................
-const forecast = {
-  today: {
-    low: 28,
-    high: 32,
-    icon: 'https://www.flaticon.com/svg/static/icons/svg/861/861059.svg',
+// const forecast = {
+//   today: {
+//     low: 28,
+//     high: 32,
+//     icon: 'https://www.flaticon.com/svg/static/icons/svg/861/861059.svg',
+//   },
+//   tomorrow: {
+//     low: 27,
+//     high: 31,
+//   },
+// };
+// // Пиши код ниже этой строки
+
+// const { today: { high: highToday, low: lowToday, icon: todayIcon = 'https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg' },
+//   tomorrow: { high: highTomorrow, low: lowTomorrow, icon: tomorrowIcon = 'https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg' } } = forecast;
+
+
+// .............................................................................
+// Module 3 Test 26
+// .............................................................................
+  // Пиши код ниже этой строки
+// function calculateMeanTemperature(forecast) {
+//   const {today: {low: todayLow, high: todayHigh}, tomorrow: {low: tomorrowLow, high: tomorrowHigh}} = forecast;
+
+//   // Пиши код выше этой строки
+//   return (todayLow + todayHigh + tomorrowLow + tomorrowHigh) / 4;
+// }
+
+
+// .............................................................................
+// Module 3 Test 27
+// .............................................................................
+// const scores = [89, 64, 42, 17, 93, 51, 26];
+// // Пиши код ниже этой строки
+// const bestScore = Math.max(...scores);
+// const worstScore = Math.min(...scores);
+
+// console.log(bestScore);
+// console.log(worstScore);
+
+// .............................................................................
+// Module 3 Test 28
+// .............................................................................
+// const firstGroupScores = [64, 42, 93];
+// const secondGroupScores = [89, 14, 51, 26];
+// const thirdGroupScores = [29, 47, 18, 97, 81];
+// // Пиши код ниже этой строки
+// const allScores = [ ...firstGroupScores, ...secondGroupScores, ...thirdGroupScores ];
+// const bestScore = Math.max(...allScores);
+// const worstScore = Math.min(...allScores);
+
+// console.log(allScores);
+// console.log(bestScore);
+// console.log(worstScore);
+
+// .............................................................................
+// Module 3 Test 29
+// .............................................................................
+// const defaultSettings = {
+//   theme: 'light',
+//   public: true,
+//   withPassword: false,
+//   minNumberOfQuestions: 10,
+//   timePerQuestion: 60,
+// };
+// const overrideSettings = {
+//   public: false,
+//   withPassword: true,
+//   timePerQuestion: 30,
+// };
+// // Пиши код ниже этой строки
+// const finalSettings = { ...defaultSettings, ...overrideSettings };
+// console.log(finalSettings);
+
+// .............................................................................
+// Module 3 Test 30
+// .............................................................................
+// function makeTask(data) {
+//   const completed = false;
+//   const category = 'Общее';
+//   const priority = 'Обычный';
+//   // Пиши код ниже этой строки
+//    const newObj = { category, priority, ...data,  completed };
+//   return newObj;
+
+//   // Пиши код выше этой строки
+// }
+// console.log(makeTask({})); //возвращает { category: 'Общее', priority: 'Обычный', completed: false }.
+// console.log(makeTask({ category: 'Домашнее', priority: 'Низкий', text: 'Вынести мусор' })); // возвращает { category: 'Домашнее', priority: 'Низкий', text: 'Вынести мусор', completed: false }.
+
+
+
+// .............................................................................
+// Module 3 Test 31
+// .............................................................................
+// Пиши код ниже этой строки
+// function add(...args) {
+//   let total = 0;
+//   for ( const arg of args) {
+//   total += arg;
+//   }
+//   return total;
+//   // Пиши код выше этой строки
+// }
+
+// console.log(add(15, 27)); // возвращает 42.
+
+
+// .............................................................................
+// Module 3 Test 32 пример
+// .............................................................................
+// function multiply(firstNumber, secondNumber, ...otherArgs) {
+//   console.log(firstNumber); // Значение первого аргумента
+//   console.log(secondNumber); // Значение второго аргумента
+//   console.log(otherArgs); // Массив остальных аргументов
+// }
+
+// multiply(1, 2, 3, 4); // 1 2 [3,4]
+
+
+
+// .............................................................................
+// Module 3 Test 32
+// .............................................................................
+// Пиши код ниже этой строки
+// function addOverNum(value,...args) {
+//   let total = 0;
+
+//   for (const arg of args) {
+//     if ( arg > value) {
+//     total += arg;
+//   }
+//   }
+//   return total;
+//   // Пиши код выше этой строки
+// }
+// console.log(addOverNum(50, 15, 27)); // возвращает 0.
+// console.log(addOverNum(10, 12, 4, 11, 48, 10, 8)); // возвращает 71.
+
+
+// .............................................................................
+// Module 3 Test 33
+// .............................................................................
+// Пиши код ниже этой строки
+// function findMatches(arrayFirst, ...args) {
+
+//   const matches = []; // Не изменяй эту строку
+//   for (let i of args) {
+//     if (arrayFirst.includes(i)){
+//       matches.push(i);
+//     }
+//   }
+//   // Пиши код выше этой строки
+//   return matches;
+// }
+
+// console.log(findMatches([1, 2, 3, 4, 5], 1, 8, 2, 7)); // возвращает [1, 2].
+// console.log(findMatches([4, 89, 17, 36, 2], 8, 17, 89, 27, 2)); // возвращает [17, 89, 2]
+
+// .............................................................................
+// Module 3 Test 34
+// .............................................................................
+// const bookShelf = {
+//   // Пиши код ниже этой строки
+//   books: ['Последнее королевство', 'Страж снов'],
+//   getBooks() {
+//     return 'Возвращаем все книги';
+//   },
+//   addBook(bookName) {
+//     return `Добавляем книгу ${bookName}`;
+//   },
+//   removeBook(bookName) {
+//   	return `Удаляем книгу ${bookName}`;
+//   },
+//   updateBook(oldName, newName) {
+//   	return `Обновляем книгу ${oldName} на ${newName}`;
+//   }
+//   // Пиши код выше этой строки
+// };
+
+
+// .............................................................................
+// Module 3 Test 35
+// .............example................................................................
+const bookShelf = {
+  books: ['Последнее королевство'],
+  getBooks() {
+    return this.books;
   },
-  tomorrow: {
-    low: 27,
-    high: 31,
+  addBook(bookName) {
+    this.books.push(bookName);
+  },
+  removeBook(bookName) {
+    const bookIndex = this.books.indexOf(bookName);
+    this.books.splice(bookIndex, 1);
   },
 };
-// Пиши код ниже этой строки
+// ....................test 35.............................................................
+const bookShelf = {
+  books: ['Последнее королевство', 'Мгла', 'Страж снов'],
+  updateBook(oldName, newName) {
+    // Пиши код ниже этой строки
+const bookIndex = this.books.indexOf(oldName);
+this.books.splice(bookIndex, 1, newName);
 
-const { today: { high: highToday, low: lowToday, icon: todayIcon = 'https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg' },
-  tomorrow: { high: highTomorrow, low: lowTomorrow, icon: tomorrowIcon = 'https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg' } } = forecast;
+    // Пиши код выше этой строки
+  },
+};
+
+
+// .............................................................................
+// Module 3 Test 36
+// .............................................................................
+
+
+
+// .............................................................................
+// Module 3 Test 37
+// .............................................................................
