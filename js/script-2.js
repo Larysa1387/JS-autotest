@@ -1,3 +1,4 @@
+// Массивы  Arrays
 // const clients = ['Mango', 'Poly', 'Ajax'];
 // const clientNameToFind = 'Poly';
 // let message;

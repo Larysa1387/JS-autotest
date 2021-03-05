@@ -1,4 +1,4 @@
-//  Массивы
+//Objeckts
 
 // const hotel = {
 //   name: 'Resort Hotel',
