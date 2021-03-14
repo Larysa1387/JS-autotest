@@ -1,5 +1,231 @@
 //Objeckts
 
+// Репета лекции...........................................
+// const inputName = 'color 123354';
+// const inputValue = 'tomato';
+
+// const colorPickerData = {
+//   [inputName]: inputValue,
+// }
+// console.log(colorPickerData);
+// ............................................................
+// const playlist = {
+//   name: 'Мой супер плейлист',
+//   rating: 5,
+//   tracks: ['трек-я', 'трек-2', 'трек-3'],
+//   trackCount: 3,
+//   changeName(newName) {
+//     console.log('this внутри changename', this);
+//     this.name = newName;
+//   },
+//   addTrack(track) {
+//     this.tracks.push(track);
+//   },
+//   updateRating(newRating) {
+//     this.rating = newRating;
+//   },
+//   getTrackCount() {
+//     return this.tracks.length;
+//   },
+// };
+
+// playlist.changeName('Новое имя');
+// playlist.addTrack('new track');
+// playlist.updateRating(10);
+// console.log(playlist);
+
+// ..........................................................
+// ...........Массив объектов................................
+// const friends = [
+//   { name: 'Mango', online: false },
+//   { name: 'Kiwi', online: true },
+//   { name: 'Poly', online: true },
+//   { name: 'Ajax', online: false },
+// ];
+
+// console.table(friends);
+
+// for (const friend of friends) {
+//   console.log(friend.name);
+//   friend.newProp = 555;
+// }
+// console.table(friends);
+
+// 1) find friend by name....................................
+// const findFriendByName = function (allFriends, name) {
+//   for (const friend of friends) {
+//     console.log(friend);
+//     console.log(friend.name);
+//     if (friend.name === name) {
+//       return 'Got it!';
+//     }
+//   }
+//   return "Don't find";
+// }
+
+// console.log(findFriendByName(friends, 'Poly'));
+// console.log(findFriendByName(friends, 'Chelsy'));
+
+// 2) create array with names features from the array of objects....................................
+// const getNames = function (allFriends) {
+//   const newArray = [];
+//   for (const friend of allFriends) {
+//     newArray.push(friend.name);
+//   };
+//   return (newArray);
+// }
+// console.log(getNames(friends));
+
+// 3) get all online friends....................
+// const getOnlineFriends = function (allFriends) {
+//   const onlineFriends = [];
+//   for (const friend of allFriends) {
+//     console.log(friend.online);
+//     if (friend.online) {
+//       onlineFriends.push(friend);
+//     };
+//   };
+//   return onlineFriends;
+// };
+
+// console.log(getOnlineFriends(friends));
+// ...................................................................
+// Есть  массив объектов авторов, надо выбрать автора с найвысшим рейтингом
+const authors = {
+  kiwi: 4,
+  poly: 7,
+  ajax: 9,
+  mango: 6,
+}
+// Так можно получить найбольшее значение, но без ключа
+// const value = Object.values(authors);
+// console.log(value);
+// const maxAuthor = Math.max(...value);
+// console.log(maxAuthor); // 9
+
+
+// const findBestAuthor = function (authors) {
+//   let bestAuthor = 0;
+//   let str = '';
+//   const keys = Object.keys(authors);
+//   for (const key of keys) {
+//     if (authors[key] > bestAuthor) {
+//       bestAuthor = authors[key];
+//       str = key;
+//     }
+//   }
+//   return str;
+// }
+// console.log(findBestAuthor(authors));
+
+// const keys = Object.keys(authors);
+// console.log(keys);
+// const ratingArr = [];
+// for (const key of keys) {
+//   console.log(authors[key]);
+//   ratingArr.push(authors[key]);
+// }
+// console.log(ratingArr);
+// const maxRating = Math.max(...ratingArr); // 9
+// console.log('this is maxRating:', maxRating);
+
+// вариант с object.entries!!!!!!!!!!!!!!!!!!!1
+// const findBestAuthor = function (authors) {
+//   let bestRating = 0;
+//   let author = '';
+//   const entries = Object.entries(authors);
+//   for (const [name, rating] of entries) {
+//     if ([rating] > bestRating) {
+//       console.log(rating);
+//       bestRating = [rating];
+//       console.log(bestRating);
+//       // author = [name, rating];
+//       author = `${name} ${rating}`;
+//     }
+//   }
+//   return author;
+// }
+// console.log(findBestAuthor(authors)); // вернет ajax 9
+
+
+
+//  ........КОРЗИНА ТОВАРОВ...........................................
+const cart = {
+  items: [],
+  getItems() {
+    return this.items;
+  },
+  add(product) {
+    for (const item of this.items) {
+      if (item.name === product.name) {
+        console.log('This item is already in the cart: ', product.name);
+        item.quantity += 1;
+        return;
+      }
+    }
+
+    const newProduct = {
+      ...product,
+      quantity: 1,
+    };
+
+    this.items.push(newProduct);
+  },
+  remove(productName) {
+    for (let i = 0; i < this.items.length; i += 1) {
+      const item = this.items[i];
+
+      if (productName === item.name) {
+        console.log('нашли такой продукт', productName);
+        console.log('index: ', i);
+        this.items.splice(i, 1);
+      }
+    }
+  },
+  clear() {
+    this.items = [];
+  },
+  countTotalPrice() {
+    let total = 0;
+    for (const item of this.items) {
+      total += item.price * item.quantity;
+    }
+    return total;
+  },
+  increaseQuantity(productName) {
+    for (const item of this.items) {
+      if (productName === item.name) {
+        item.quantity += 1;
+      }
+    }
+  },
+  decreaseQuantity(productName) {
+    for (const item of this.items) {
+      if (productName === item.name) {
+        item.quantity -= 1;
+      }
+    }
+  },
+};
+
+console.table(cart.getItems()); // пусто пока. ничего не добавили
+
+cart.add({ name: 'apple', price: 50 });
+cart.add({ name: 'lemon', price: 60 });
+cart.add({ name: 'apple', price: 50 });
+cart.add({ name: 'lemon', price: 60 });
+cart.add({ name: 'banana', price: 110 });
+console.table(cart.getItems());
+console.log(cart.countTotalPrice());
+
+cart.increaseQuantity('apple'); // 2 было + 1 . стало 3
+cart.decreaseQuantity('lemon'); // 2 было - 1. стало 1
+
+cart.remove('banana'); // удалили банан с корзины
+console.table(cart.getItems());
+
+
+// .....conspect.......................................................
 // const hotel = {
 //   name: 'Resort Hotel',
 //   stars: 5,
@@ -867,86 +1093,86 @@
 // .............................................................................
 // Module 3 Test 41
 // .............................................................................
-const atTheOldToad = {
-  potions: [
-    { name: 'Зелье скорости', price: 460 },
-    { name: 'Дыхание дракона', price: 780 },
-    { name: 'Каменная кожа', price: 520 },
-  ],
-  // Пиши код ниже этой строки
-  getPotions() {
-    return this.potions;
-  },
-  addPotion(potionName) {
-    if (this.potions.includes(potionName)) {
-      return `Зелье ${potionName} уже есть в инвентаре!`;
-    }
-    this.potions.push(potionName);
-  },
-  removePotion(potionName) {
-    // const potionIndex = this.potions.indexOf(potionName);
-    const { potions } = this;
-    for (let i = 0; i < potions.length; i += 1) {
-      const { name } = potions[i];
-        if (name === -1) {
-          return `Зелья ${potionName} нет в инвентаре!`;
-        };
-        if (potionName === name) {
-        return potions.splice(i, 1);
-      }
-    }
-  },
-  updatePotionName(oldName, newName) {
-    const { potions } = this;
-    for (let i = 0; i < potions.length; i += 1) {
-        const { name } = potions[i];
-      if (name === -1) {
-        return `Зелья ${potionName} нет в инвентаре!`;
-      };
-      if (oldName === name) {
-          potions[i].name = newName;
-        return name;
-      }
-    }
-  },
-  // Пиши код выше этой строки
-};
-// console.log(atTheOldToad.getPotions());
-// console.log(atTheOldToad.removePotion('Дыхание дракона'));  //, в свойстве potions будет массив [ { name: 'Зелье скорости', price: 460 }, { name: 'Каменная кожа', price: 520 } ].
-console.log(atTheOldToad.updatePotionName('Дыхание дракона', 'Полиморф'),);  // [ { name: 'Зелье скорости', price: 460 }, { name: 'Полиморф', price: 780 }, { name: 'Каменная кожа', price: 520 } ].
-console.log(atTheOldToad.potions);
+// const atTheOldToad = {
+//   potions: [
+//     { name: 'Зелье скорости', price: 460 },
+//     { name: 'Дыхание дракона', price: 780 },
+//     { name: 'Каменная кожа', price: 520 },
+//   ],
+//   // Пиши код ниже этой строки
+//   getPotions() {
+//     return this.potions;
+//   },
+//   addPotion(potionName) {
+//     if (this.potions.includes(potionName)) {
+//       return `Зелье ${potionName} уже есть в инвентаре!`;
+//     }
+//     this.potions.push(potionName);
+//   },
+//   removePotion(potionName) {
+//     // const potionIndex = this.potions.indexOf(potionName);
+//     const { potions } = this;
+//     for (let i = 0; i < potions.length; i += 1) {
+//       const { name } = potions[i];
+//         if (name === -1) {
+//           return `Зелья ${potionName} нет в инвентаре!`;
+//         };
+//         if (potionName === name) {
+//         return potions.splice(i, 1);
+//       }
+//     }
+//   },
+//   updatePotionName(oldName, newName) {
+//     const { potions } = this;
+//     for (let i = 0; i < potions.length; i += 1) {
+//         const { name } = potions[i];
+//       if (name === -1) {
+//         return `Зелья ${potionName} нет в инвентаре!`;
+//       };
+//       if (oldName === name) {
+//           potions[i].name = newName;
+//         return name;
+//       }
+//     }
+//   },
+//   // Пиши код выше этой строки
+// };
+// // console.log(atTheOldToad.getPotions());
+// // console.log(atTheOldToad.removePotion('Дыхание дракона'));  //, в свойстве potions будет массив [ { name: 'Зелье скорости', price: 460 }, { name: 'Каменная кожа', price: 520 } ].
+// console.log(atTheOldToad.updatePotionName('Дыхание дракона', 'Полиморф'),);  // [ { name: 'Зелье скорости', price: 460 }, { name: 'Полиморф', price: 780 }, { name: 'Каменная кожа', price: 520 } ].
+// console.log(atTheOldToad.potions);
 
-// правильный вариант решения от ментора
-// ...........................................................
-const atTheOldToad = {
-    potions: [
-        { name: 'Зелье скорости', price: 460 },
-        { name: 'Дыхание дракона', price: 780 },
-        { name: 'Каменная кожа', price: 520 },
-    ],
-    // Пиши код ниже этой строки
-    getPotions() {
-        return this.potions;
-    },
-    addPotion(potionName) {
-        if(this.potions.includes(potionName)) { return }
-        else {
-            this.potions.push(potionName);
-            return this.potions;
-        }
-    },
-    removePotion(potionName) {
-        for(let i = 0; i < this.potions.length; i += 1) {
-            if(this.potions[i].name === potionName) {
-                this.potions.splice(i, 1)
-            }
-        }
-    },
-    updatePotionName(oldName, newName) {
-        for(const value of this.potions) {
-            if(value.name === oldName) {
-                value.name = newName
-            }
-        }
-    }
-}
+// // правильный вариант решения от ментора
+// // ...........................................................
+// const atTheOldToad = {
+//     potions: [
+//         { name: 'Зелье скорости', price: 460 },
+//         { name: 'Дыхание дракона', price: 780 },
+//         { name: 'Каменная кожа', price: 520 },
+//     ],
+//     // Пиши код ниже этой строки
+//     getPotions() {
+//         return this.potions;
+//     },
+//     addPotion(potionName) {
+//         if(this.potions.includes(potionName)) { return }
+//         else {
+//             this.potions.push(potionName);
+//             return this.potions;
+//         }
+//     },
+//     removePotion(potionName) {
+//         for(let i = 0; i < this.potions.length; i += 1) {
+//             if(this.potions[i].name === potionName) {
+//                 this.potions.splice(i, 1)
+//             }
+//         }
+//     },
+//     updatePotionName(oldName, newName) {
+//         for(const value of this.potions) {
+//             if(value.name === oldName) {
+//                 value.name = newName
+//             }
+//         }
+//     }
+// }
