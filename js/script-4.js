@@ -274,6 +274,9 @@
 
 // alert(str); // ?
 // var str = "Hello";
+
+
+
 // .............................................................................
 // Module 4 Test 1
 // .............................................................................
@@ -380,6 +383,58 @@
 //   title: "My menu"
 // };
 // Обратите внимание, что multiplyNumeric не нужно ничего возвращать. Следует напрямую изменять объект.
+// /////////////////////////////////////////////
+// Task 3
+// Нужно перебрать объекты и вывести имя лучшего сотрудника
+// *решить в одну строку
+/*
+ * Вызовы функции для проверки работоспособности твоей реализации.
+ */
+// console.log(
+//   findBestEmployee({
+//     ann: 29,
+//     david: 35,
+//     helen: 1,
+//     lorence: 99,
+//   })
+// ); // lorence
+// console.log(
+// findBestEmployee({
+// poly: 12,
+// mango: 17,
+// ajax: 4,
+// }),
+// ); // mango
+// console.log(
+// findBestEmployee({
+// lux: 147,
+// david: 21,
+// kiwi: 19,
+// chelsy: 38,
+// }),
+// ); // lux
+// const findBestEmployee = function (obj) {
+//   let bestEmployee = 0;
+//   let str = "";
+//   for (const key in obj) {
+//     if (obj[key] > bestEmployee) {
+//       bestEmployee = obj[key];
+//       str = key;
+//     }
+//   }
+//   return str;
+// };
+// почти идеальное решение
+// const findBestEmployee = (employees) =>
+//   Object.entries(employees).sort((a, b) => b[1] - a[1])[0][0];
+// console.log(
+//   findBestEmployee({
+//     ann: 29,
+//     david: 35,
+//     helen: 1,
+//     lorence: 99,
+//   })
+// );
 // ........................................................................................................
 
 
@@ -535,12 +590,31 @@
 
 // // composeMessage(orders, 1);
 
-// // const messages = orders.map(composeMessage.call(this.orders => order.position));
 // const messages = orders.map(function (order, index) {
 //     return composeMessage.call(order, index + 1);
 // });
 // console.log(messages);
-
+// ......................................................................................
+// ........пример на вебинаре..............................................................
+// const orders = [
+//   { email: 'solomon@topmail.ua', dish: 'Burger' },
+//   { email: 'artemis@coldmail.net', dish: 'Pizza' },
+//   { email: 'jacob@mail.com', dish: 'Taco' },
+// ];
+​
+// // Пиши код ниже этой строки
+// function composeMessage(position) {
+//   return `Готовим ${this.dish} для ${this.email}. Ваш заказ ${position}-й в очереди.`;
+// }
+// const messages = orders.map((element, index) =>
+//   composeMessage.apply(element, [index + 1]),
+// );
+​
+// // for (let i = 0; i < orders.length; i += 1) {
+// //   messages.push(composeMessage.call(orders[i], i + 1));
+// // }
+​
+// console.log(messages);
 
 // .............................................................................
 // Module 4 Test 8
@@ -616,3 +690,26 @@ console.log(secondInvoke);
 // Почта poly@hotmail.de удалена из рассылки.
 
 console.log(service.mailingList); // ['mango@mail.com', 'ajax@jmail.net', 'kiwi@mail.uk']
+
+
+
+
+
+// ....................................................................................
+/**
+ * http://fecore.net.ua/books/m5ph3r-javascript/module-02/scope.html
+ * http://fecore.net.ua/books/m5ph3r-javascript/module-04/closures.html
+ * Измените анонимную функцию которая присваивается к result[i]
+ * так, чтобы в результате в консоли мы послучили числа от 0 до 4 включительно
+ */
+const result = [];
+for (var i = 0; i < 5; i++) {
+  result[i] = function () {
+    console.log(i);
+  };
+}
+result[0](); // 5, ожидаем 0
+result[1](); // 5, ожидаем 1
+result[2](); // 5, ожидаем 2
+result[3](); // 5, ожидаем 3
+result[4](); // 5, ожидаем 4
