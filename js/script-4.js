@@ -601,7 +601,8 @@
 //   { email: 'artemis@coldmail.net', dish: 'Pizza' },
 //   { email: 'jacob@mail.com', dish: 'Taco' },
 // ];
-​
+
+////
 // // Пиши код ниже этой строки
 // function composeMessage(position) {
 //   return `Готовим ${this.dish} для ${this.email}. Ваш заказ ${position}-й в очереди.`;
@@ -609,11 +610,9 @@
 // const messages = orders.map((element, index) =>
 //   composeMessage.apply(element, [index + 1]),
 // );
-​
 // // for (let i = 0; i < orders.length; i += 1) {
 // //   messages.push(composeMessage.call(orders[i], i + 1));
 // // }
-​
 // console.log(messages);
 
 // .............................................................................
@@ -659,37 +658,37 @@
 // .............................................................................
 // Module 4 Test 10
 // .............................................................................
-const service = {
-  mailingList: ['mango@mail.com', 'poly@hotmail.de', 'ajax@jmail.net'],
-  subscribe(email) {
-    this.mailingList.push(email);
-    return `Почта ${email} добавлена в рассылку.`;
-  },
-  unsubscribe(email) {
-    this.mailingList = this.mailingList.filter((e) => e !== email);
-    return `Почта ${email} удалена из рассылки.`;
-  },
-};
+// const service = {
+//   mailingList: ['mango@mail.com', 'poly@hotmail.de', 'ajax@jmail.net'],
+//   subscribe(email) {
+//     this.mailingList.push(email);
+//     return `Почта ${email} добавлена в рассылку.`;
+//   },
+//   unsubscribe(email) {
+//     this.mailingList = this.mailingList.filter((e) => e !== email);
+//     return `Почта ${email} удалена из рассылки.`;
+//   },
+// };
 
-function logAndInvokeAction(email, action) {
-  console.log(`Выполняем действие с ${email}.`);
-  return action(email);
-}
+// function logAndInvokeAction(email, action) {
+//   console.log(`Выполняем действие с ${email}.`);
+//   return action(email);
+// }
 
-const firstInvoke = logAndInvokeAction('kiwi@mail.uk', service.subscribe.bind(service)); // добавили service.subscribe.bind(service)
-console.log(firstInvoke);
-// Почта kiwi@mail.uk добавлена в рассылку.
+// const firstInvoke = logAndInvokeAction('kiwi@mail.uk', service.subscribe.bind(service)); // добавили service.subscribe.bind(service)
+// console.log(firstInvoke);
+// // Почта kiwi@mail.uk добавлена в рассылку.
 
-console.log(service.mailingList);
-/* ['mango@mail.com',
-    'poly@hotmail.de',
-    'ajax@jmail.net',
-    'kiwi@mail.uk']*/
-const secondInvoke = logAndInvokeAction('poly@hotmail.de', service.unsubscribe.bind(service)); // добавили service.unsubscribe.bind(service)
-console.log(secondInvoke);
-// Почта poly@hotmail.de удалена из рассылки.
+// console.log(service.mailingList);
+// /* ['mango@mail.com',
+//     'poly@hotmail.de',
+//     'ajax@jmail.net',
+//     'kiwi@mail.uk']*/
+// const secondInvoke = logAndInvokeAction('poly@hotmail.de', service.unsubscribe.bind(service)); // добавили service.unsubscribe.bind(service)
+// console.log(secondInvoke);
+// // Почта poly@hotmail.de удалена из рассылки.
 
-console.log(service.mailingList); // ['mango@mail.com', 'ajax@jmail.net', 'kiwi@mail.uk']
+// console.log(service.mailingList); // ['mango@mail.com', 'ajax@jmail.net', 'kiwi@mail.uk']
 
 
 
@@ -704,12 +703,45 @@ console.log(service.mailingList); // ['mango@mail.com', 'ajax@jmail.net', 'kiwi@
  */
 const result = [];
 for (var i = 0; i < 5; i++) {
-  result[i] = function () {
-    console.log(i);
-  };
+  console.log(result);
+  console.log(result[i]);
+  result[i] = function() {
+    result.push(result[i]);
+    // console.log(i);
+  }
 }
 result[0](); // 5, ожидаем 0
 result[1](); // 5, ожидаем 1
 result[2](); // 5, ожидаем 2
 result[3](); // 5, ожидаем 3
 result[4](); // 5, ожидаем 4
+console.log(result[0]());
+console.log(result[2]());
+
+// .....................................................................................................................
+// Implement the function unique_in_order which takes as argument a sequence and returns a list of items
+// without any elements with the same value next to each other and preserving the original order of elements.
+// For example:
+// uniqueInOrder('AAAABBBCCDAABBB') //== ['A', 'B', 'C', 'D', 'A', 'B']
+// uniqueInOrder('ABBCcAD')         //== ['A', 'B', 'C', 'c', 'A', 'D']
+// uniqueInOrder([1,2,2,3,3])       //== [1,2,3]
+
+
+// const uniqueInOrder = function (iterable) {
+//   const newArray = [];
+//     for (let i = 0; i < iterable.length; i++) {
+//       // console.log(iterable[i]);
+//     if (iterable[i] != iterable[i + 1]) {
+//       newArray.push(iterable[i]);
+//       // console.log(newArray);
+//       }
+//   }
+//     return newArray;
+//   //your code here - remember iterable can be a string or an array
+// };
+
+// uniqueInOrder('AAAABBBCCDAABBB') //== ['A', 'B', 'C', 'D', 'A', 'B']
+// console.log(uniqueInOrder('AAAABBBCCDAABBB'));
+// uniqueInOrder('ABBCcAD')         //== ['A', 'B', 'C', 'c', 'A', 'D']
+// uniqueInOrder([1,2,2,3,3])       //== [1,2,3]
+// console.log(uniqueInOrder([1,2,2,3,3]));
