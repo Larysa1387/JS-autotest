@@ -57,6 +57,7 @@
 // parent.surname = 'Moore';
 // parent.age = 54;
 // console.log(parent);
+
 // const child = Object.create(parent);
 // child.name = 'Jason';
 // child.age = 27;
@@ -557,56 +558,190 @@
 // ..............................................................................
 // Module 5 test 19
 // ...............................................................................
-class User {
-  email;
+// class User {
+//   email;
 
-  constructor(email) {
-    this.email = email;
-  }
+//   constructor(email) {
+//     this.email = email;
+//   }
 
-  get email() {
-    return this.email;
-  }
+//   get email() {
+//     return this.email;
+//   }
 
-  set email(newEmail) {
-    this.email = newEmail;
-  }
+//   set email(newEmail) {
+//     this.email = newEmail;
+//   }
+// }
+// class Admin extends User {
+//   // Пиши код ниже этой строки
+
+//   static AccessLevel = {
+//     BASIC: 'basic',
+//     SUPERUSER: 'superuser'
+//   };
+
+//   accessLevel;
+//   blacklistedEmails = [];
+
+
+//   constructor({ email, accessLevel }) {
+//     super(email);
+//     this.accessLevel = accessLevel;
+//   }
+
+//   blacklist(email){
+//   this.blacklistedEmails.push(email);
+//   }
+
+//   isBlacklisted(email){
+//     return this.blacklistedEmails.includes(email);
+//   }
+//   // Пиши код выше этой строки
+// }
+
+// const mango = new Admin({
+//   email: 'mango@mail.com',
+//   accessLevel: Admin.AccessLevel.SUPERUSER
+// });
+
+// console.log(mango.email); // mango@mail.com
+// console.log(mango.accessLevel); // superuser
+// mango.blacklist('poly@mail.com');
+// console.log(mango.blacklistedEmails); // 'poly@mail.com'
+// console.log(mango.isBlacklisted('mango@mail.com')); //  false
+// console.log(mango.isBlacklisted('poly@mail.com')); // true
+
+
+// ....Add vebinar task 1............................................................................
+// Напиши функцию-конструктор Account, которая создает объект
+// со свойствами login и email. В prototype функции-конструктора
+// добавь метод getInfo(), который выводит в консоль значения
+// полей login и email объекта который его вызвал.
+
+function Account({ login, email }) {
+  this.login = login;
+  this.email = email;
 }
-class Admin extends User {
-  // Пиши код ниже этой строки
 
-  static AccessLevel = {
-    BASIC: 'basic',
-    SUPERUSER: 'superuser'
-  };
-
-  accessLevel;
-  blacklistedEmails = [];
-
-
-  constructor({ email, accessLevel }) {
-    super(email);
-    this.accessLevel = accessLevel;
-  }
-
-  blacklist(email){
-  this.blacklistedEmails.push(email);
-  }
-
-  isBlacklisted(email){
-    return this.blacklistedEmails.includes(email);
-  }
-  // Пиши код выше этой строки
+Account.prototype.getInfo = function (){
+  console.log(`login: ${this.login}, Email: ${this.email}`);
 }
 
-const mango = new Admin({
-  email: 'mango@mail.com',
-  accessLevel: Admin.AccessLevel.SUPERUSER
+console.log(Account.prototype.getInfo()); // function
+
+const mango = new Account({
+  login: 'Mangozedog',
+  email: 'mango@dog.woof',
 });
 
-console.log(mango.email); // mango@mail.com
-console.log(mango.accessLevel); // superuser
-mango.blacklist('poly@mail.com');
-console.log(mango.blacklistedEmails); // 'poly@mail.com'
-console.log(mango.isBlacklisted('mango@mail.com')); //  false
-console.log(mango.isBlacklisted('poly@mail.com')); // true
+mango.getInfo(); // Login: Mangozedog, Email: mango@dog.woof
+
+const poly = new Account({
+  login: 'Poly',
+  email: 'poly@mail.com',
+});
+
+poly.getInfo(); // Login: Poly, Email: poly@mail.com
+
+
+// ........Add vebinar task 2.....................................................................................
+class Car {
+  /*
+   * Добавь статический метод `getSpecs(car)`,
+   * который принимает объект-машину как параметр и выводит
+   * в консоль значения свойств maxSpeed, speed, isOn, distance и price.
+   */
+  static getSpecs(car) {
+    return `maxSpeed: ${car.maxSpeed}, speed: ${car.speed}, isOn: ${car.isOn}, distance: ${car.distance}, price: ${car._price}`;
+
+  }
+  /*
+   * Конструктор получает объект настроек.
+   *
+   * Добавь свойства будущеего экземпляра класса:
+   *  speed - текущая скорость, изначально 0
+   *  price - цена автомобиля
+   *  maxSpeed - максимальная скорость
+   *  isOn - заведен ли автомобиль, значения true или false. Изначально false
+   *  distance - общий киллометраж, изначально 0
+   */
+  constructor({ price, maxSpeed}) {
+    this._price = price;
+    this.maxSpeed = maxSpeed;
+    this.speed = 0;
+    this.isOn = false;
+    this.distance = 0;
+  }
+  /*
+   * Добавь геттер и сеттер для свойства price,
+   * который будет работать с свойством цены автомобиля.
+   */
+  get price() {
+    return this._price;
+  }
+
+  set price(newPrice) {
+    this._price = newPrice;
+  }
+  /*
+   * Добавь код для того чтобы завести автомобиль
+   * Записывает в свойство isOn значение true
+   */
+  turnOn() {
+    this.isOn = true;
+  }
+  /*
+   * Добавь код для того чтобы заглушить автомобиль
+   * Записывает в свойство isOn значение false,
+   * и сбрасывает текущую скорость в 0
+   */
+  turnOff() {
+    this.isOn = false;
+    this.speed = 0;
+  }
+  /*
+   * Добавялет к свойству speed полученное значение,
+   * при условии что результирующая скорость
+   * не больше чем значение свойства maxSpeed
+   */
+  accelerate(value) {
+
+    if (this.speed + value <= this.maxSpeed) {
+      this.speed += value;
+    }
+  }
+  /*
+   * Отнимает от свойства speed полученное значение,
+   * при условии что результирующая скорость не меньше нуля
+   */
+  decelerate(value) {
+    if (this.speed - value >= 0) {
+      this.speed -= value;
+    }
+  }
+  /*
+   * Добавляет в поле distance киллометраж (hours * speed),
+   * но только в том случае если машина заведена!
+   */
+  drive(hours) {
+    if (this.isOn) {
+      this.distance += hours * this.speed;
+    }
+  }
+}
+const mustang = new Car({ maxSpeed: 200, price: 2000 });
+console.log(mustang);
+mustang.turnOn();
+mustang.accelerate(50);
+mustang.drive(2);
+console.log(Car.getSpecs(mustang));
+// maxSpeed: 200, speed: 50, isOn: true, distance: 100, price: 2000
+mustang.decelerate(20);
+mustang.drive(1);
+mustang.turnOff();
+console.log(Car.getSpecs(mustang));;
+// maxSpeed: 200, speed: 0, isOn: false, distance: 130, price: 2000
+console.log(mustang.price); // 2000
+mustang.price = 4000;
+console.log(mustang.price); // 4000
