@@ -86,13 +86,11 @@
 //     const filteredNumbers = [];
 //     // Пиши код ниже этой строки
 
-//   numbers.forEach(number => {
-//     if (number > value) {
-
-//       filteredNumbers.push(number);
-//     }
-//   }
-//   );
+  // numbers.forEach(number => {
+  //   if (number > value) {
+  //     filteredNumbers.push(number);
+  //   }
+  // });
 
 //     // Пиши код выше этой строки
 //     return filteredNumbers;
@@ -610,25 +608,180 @@ const users = [
 // Module 6 test 32
 // ............................................................................................
 // Пиши код ниже этой строки
-const calculateTotalBalance = users => {
-  return users.reduce((acc, user) => {
-    return acc + user.balance
-  }, 0);
-};
-console.log('~ calculateTotalBalance', calculateTotalBalance(users));
+// const calculateTotalBalance = users => {
+//   return users.reduce((acc, user) => {
+//     return acc + user.balance
+//   }, 0);
+// };
+// console.log('~ calculateTotalBalance', calculateTotalBalance(users));
 
 
 // ............................................................................................
 // Module 6 test 33
 // ............................................................................................
+// const getTotalFriendCount = users => {
+
+//   return users
+//     .flatMap((user) => user.friends)
+//     .reduce((acc, user) => {
+//       return acc + [user.friends].length;
+//     }, 0);
+// };
+// console.log('~ getTotalFriendCount', getTotalFriendCount(users));
+
+// ............................................................................................
+// Module 6 test 34
+// ............................................................................................
+// const releaseDates = [2016, 1967, 2008, 1984, 1973, 2012, 1997];
+// const authors = [
+//   'Ли Танит',
+//   'Бернард Корнуэлл',
+//   'Роберт Шекли',
+//   'Федор Достоевский'
+// ];
+// // Пиши код ниже этой строки
+// const ascendingReleaseDates = [...releaseDates].sort();
+// const alphabeticalAuthors = [...authors].sort();
+// console.log(ascendingReleaseDates); // [ 1967, 1973, 1984, 1997, 2008, 2012, 2016]
+// console.log(alphabeticalAuthors); //[ 'Бернард Корнуэлл', 'Ли Танит', 'Роберт Шекли', 'Федор Достоевский' ]
 
 
-const getTotalFriendCount = users => {
+// ............................................................................................
+// Module 6 test 35
+// ............................................................................................
+// const releaseDates = [2016, 1967, 2008, 1984, 1973, 2012, 1997];
+// // Пиши код ниже этой строки
 
-  return users
-    .flatMap((user) => user.friends)
-    .reduce((acc, user) => {
-      return acc + user.friends.length;
-    }, 0);
+// const ascendingReleaseDates = [...releaseDates].sort((a,b) => a-b);
+// console.log('~ ascendingReleaseDates', ascendingReleaseDates);
+// const descendingReleaseDates = [...releaseDates].sort((a, b) => b-a);
+// console.log('~ descendingReleaseDates', descendingReleaseDates);
+
+// // ............................................................................................
+// // Module 6 test 36
+// // ......Example.................................................................................
+// 'a'.localeCompare('b'); // -1
+// 'b'.localeCompare('a'); // 1
+// 'a'.localeCompare('a'); // 0
+// 'b'.localeCompare('b'); // 0
+// + Возвращает отрицательное значение если firstString должна быть перед secondString.
+// + Возвращает положительное значение больше нуля если firstString должна быть после secondString.
+// + Если строки одинаковы, возвращается ноль.
+
+// ......test 36.................................................................................
+// const authors = [
+//     'Ли Танит',
+//     'Бернард Корнуэлл',
+//     'Роберт Шекли',
+//     'Федор Достоевский',
+//     'Говард Лавкрафт'
+//   ];
+//   // Пиши код ниже этой строки
+
+//   const authorsInAlphabetOrder = [...authors].sort((a, b) => a.localeCompare(b));
+//   console.log(authorsInAlphabetOrder); // [ 'Бернард Корнуэлл', 'Говард Лавкрафт', 'Ли Танит', 'Роберт Шекли', 'Федор Достоевский']
+//   const authorsInReversedOrder = [...authors].sort((a, b) => b.localeCompare(a));
+// console.log(authorsInReversedOrder); // [ 'Федор Достоевский', 'Роберт Шекли', 'Ли Танит', 'Говард Лавкрафт', 'Бернард Корнуэлл']
+
+// ............................................................................................
+// Module 6 test 37
+// ............................................................................................
+// const books = [
+//   { title: 'Последнее королевство', author: 'Бернард Корнуэлл', rating: 8.38 },
+//   { title: 'На берегу спокойных вод', author: 'Роберт Шекли', rating: 8.51 },
+//   { title: 'Сон смешного человека', author: 'Федор Достоевский', rating: 7.75 },
+//   { title: 'Красна как кровь', author: 'Ли Танит', rating: 7.94 },
+//   { title: 'Враг Божий', author: 'Бернард Корнуэлл', rating: 8.67 }
+// ];
+// // Пиши код ниже этой строки
+
+// const sortedByAuthorName = [...books].sort((a, b) => a.author.localeCompare(b.author));
+// console.log('~ sortedByAuthorName', sortedByAuthorName); // по алфавиту от А до Я
+// const sortedByReversedAuthorName = [...books].sort((a, b) => b.author.localeCompare(a.author)); // от Я до А
+
+// const sortedByAscendingRating = [...books].sort((a, b) => a.rating - b.rating); // от 1 до 10
+
+// const sortedByDescentingRating = [...books].sort((a, b) => b.rating - a.rating); // от 10 до 1
+
+// ............................................................................................
+// Module 6 test 38
+// ............................................................................................
+// Пиши код ниже этой строки
+// const sortByAscendingBalance = users => {
+//   return [...users].sort((a, b) => a.balance - b.balance);
+// };
+// console.log('~ sortByAscendingBalance', sortByAscendingBalance(users));
+// console.table(sortByAscendingBalance(users));
+
+// ............................................................................................
+// Module 6 test 39
+// ............................................................................................
+// Пиши код ниже этой строки
+// const sortByDescendingFriendCount = users => {
+//   return [...users].sort((a, b) => b.friends.length - a.friends.length);
+// };
+
+// console.log(sortByDescendingFriendCount(users));
+// ............................................................................................
+// Module 6 test 40
+// ............................................................................................
+// Пиши код ниже этой строки
+// const sortByName = users => {
+//   return [...users].sort((a, b) => a.name.localeCompare(b.name));
+// };
+// console.log(sortByName(users));
+
+// ............................................................................................
+// Module 6 test 41
+// ............................................................................................
+// const books = [
+//   { title: 'Последнее королевство', author: 'Бернард Корнуэлл', rating: 8.38 },
+//   { title: 'На берегу спокойных вод', author: 'Роберт Шекли', rating: 8.51 },
+//   { title: 'Сон смешного человека', author: 'Федор Достоевский', rating: 7.75 },
+//   { title: 'Красна как кровь', author: 'Ли Танит', rating: 8.14 },
+//   { title: 'Сны В Ведьмином Доме', author: 'Говард Лавкрафт', rating: 8.67 }
+// ];
+// const MIN_BOOK_RATING = 8;
+// // Пиши код ниже этой строки
+
+// const names = books
+// .filter(book => book.rating > MIN_BOOK_RATING)
+// .map(book => book.author)
+// .sort((a, b) => a.localeCompare(b));
+// console.log(names);
+
+// ............................................................................................
+// Module 6 test 42
+// ............................................................................................
+// Пиши код ниже этой строки
+// const getNamesSortedByFriendCount = users => {
+//   return [...users]
+//   .sort((a, b) => a.friends.length - b.friends.length)
+//   .map(user => user.name);
+// };
+
+// console.log(getNamesSortedByFriendCount(users));
+
+// ............................................................................................
+// Module 6 test 43
+// ............................................................................................
+// Пиши код ниже этой строки
+// const getSortedFriends = users => {
+//   return [...users]
+//   .flatMap((user) => user.friends)
+//   .filter((user, index, array) => array.indexOf(user) === index)
+//   .sort((a, b) => a.localeCompare(b));
+// };
+// console.log(getSortedFriends(users));
+
+// ............................................................................................
+// Module 6 test 44
+// ............................................................................................
+// Пиши код ниже этой строки
+const getTotalBalanceByGender = (users, gender) => {
+  return [...users]
+    .filter(user => user.gender === gender)
+    .reduce((acc, user) => (acc + user.balance), 0);
 };
-console.log('~ getTotalFriendCount', getTotalFriendCount(users));
+console.log(getTotalBalanceByGender(users, 'male',));
+console.log(getTotalBalanceByGender(users, 'female',));
