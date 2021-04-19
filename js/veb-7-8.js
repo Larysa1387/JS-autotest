@@ -20,18 +20,9 @@
 
 // listEl.append(...murkup);
 
-// const randomRgb = () => {
-//   const rgbNum = () => Math.floor(Math.random() * 256);
-//   const r = rgbNum();
-//   const g = rgbNum();
-//   const b = rgbNum();
-//   return `rgb(${r},${g},${b})`;
-// };
+// task-05
 // Напиши скрипт который, при наборе текста в инпуте input#name-input (событие input),
 // подставляет его текущее значение в span#name - output.Если инпут пустой, в спане должна отображаться строка 'незнакомец'.
-
-{/* <input type="text" placeholder="Ваше имя?" id="name-input" />
-<h1>Привет, <span id="name-output">незнакомец</span>!</h1> */}
 
 // const ref = {
 //   inputEl: document.querySelector('#name-input'),
@@ -45,7 +36,7 @@
 //   // evt.target.value ? ref.textEl.textContent = evt.target.value : ref.textEl.textContent = 'Незнакомец';
 // }
 
-
+// task-08
 // Напиши скрипт создания и очистки коллекции элементов. Пользователь вводит количество элементов в input и
 // нажимает кнопку Создать, после чего рендерится коллекция.При нажатии на кнопку Очистить, коллекция элементов очищается.
 
@@ -81,3 +72,71 @@ function createBoxes(amount) {
 
 renderBtnRef.addEventListener('click', () => createBoxes(+inputRef.value))
 destroyBtnRef.addEventListener('click', () => { boxesContainer.innerHTML = ''; inputRef.value='' })
+
+
+// home work 8
+
+import gallery from "./gallery-items.js";
+const refs = {
+  gallery: document.querySelector(".gallery"),
+  modal: document.querySelector(".lightbox"),
+  modalImg: document.querySelector(".lightbox__image"),
+};
+let activeIndex = 0;
+const markup = gallery.map(({ preview, original, description }) => {
+  return `<li class="gallery__item">
+    <a class="gallery__link" href="${original}">
+    <img class="gallery__image" src="${preview}" data-source="${original}" alt="${description}">
+    </a>
+    </li>`;
+});
+refs.gallery.insertAdjacentHTML("beforeend", markup.join(""));
+refs.gallery.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (e.target.nodeName !== "IMG") {
+    return;
+  }
+  markup.forEach((el, ind) => {
+    if (el.includes(e.target.src)) {
+      activeIndex = ind;
+    }
+  });
+  refs.modalImg.src = e.target.dataset.source;
+  refs.modal.classList.add("is-open");
+});
+refs.modal.addEventListener("click", (e) => {
+  if (e.target.nodeName === "IMG") {
+    return;
+  }
+  onCloseModal();
+});
+function onCloseModal() {
+  refs.modal.classList.remove("is-open");
+  refs.modalImg.src = "";
+}
+function keyboardManipulation({ key }) {
+  switch (key) {
+    case gallery.length - 1 > activeIndex && "ArrowRight":
+      activeIndex += 1;
+      refs.modalImg.src = gallery[activeIndex].original;
+      break;
+    case activeIndex > 0 && "ArrowLeft":
+      activeIndex -= 1;
+      refs.modalImg.src = gallery[activeIndex].original;
+      break;
+    case activeIndex === gallery.length - 1 && "ArrowRight":
+      activeIndex = 0;
+      refs.modalImg.src = gallery[activeIndex].original;
+      break;
+    case activeIndex === 0 && "ArrowLeft":
+      activeIndex = gallery.length - 1;
+      refs.modalImg.src = gallery[activeIndex].original;
+      break;
+    case "Escape":
+      onCloseModal();
+      break;
+    default:
+      alert("что-то пошло не так");
+  }
+}
+window.addEventListener("keyup", keyboardManipulation);
